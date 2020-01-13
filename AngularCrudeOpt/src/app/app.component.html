@@ -37,11 +37,22 @@
     <tbody>
       <tr *ngFor="let item of registrationArr, let i = index">
         <td>{{i+1}}</td>
-        <td>{{item.firstName}}</td>
-        <td>{{item.lastName}}</td>
-        <td>{{item.emailId}}</td>
+        <td>
+          <input type="text" class="form-control"  [(ngModel)]="userName" *ngIf="i===updatedIndex">
+          {{item.firstName}}</td>
+        <td>
+          <input type="text" class="form-control"   [(ngModel)]="lName" *ngIf="i===updatedIndex">
+          {{item.lastName}}</td>
+        <td>
+          <input type="email" class="form-control"  [(ngModel)]="emailId" *ngIf="i===updatedIndex"> 
+          {{item.emailId}}
+        </td>
         <td><button class="btn btn-primary" (click)="deleteData(i)">Delete</button></td>
-        <td><button class="btn btn-primary">Update</button></td>
+        <td>
+          <button class="btn btn-primary" (click)="updateRecord(i)" *ngIf="i !== updatedIndex">Update</button>
+          <button class="btn btn-primary" (click)="completeUpdate(i)" *ngIf="i === updatedIndex">complete</button>
+        </td>
+      
       </tr>
      
     </tbody>

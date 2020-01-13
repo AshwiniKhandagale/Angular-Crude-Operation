@@ -11,6 +11,7 @@ export class AppComponent implements OnInit{
   lName:string="";
   emailId:string="";
   registrationArr:Student[]=[];
+  updatedIndex :any;
   ngOnInit(){
   
   }
@@ -26,6 +27,32 @@ export class AppComponent implements OnInit{
   }
   deleteData(index){
    this.registrationArr.splice(index,1);
+  }
+  updateRecord(index){
+    this.updatedIndex=index;
+    for (let i = 0; i <  this.registrationArr.length; i++) {
+      const element =  this.registrationArr[i];
+      if(index===i){
+        
+        this.registrationArr[i].emailId="";
+        this.registrationArr[i].firstName="";
+        this.registrationArr[i].lastName="";
+      }
+      
+    }
+  }
+  completeUpdate(index){
+    for (let i = 0; i <  this.registrationArr.length; i++) {
+      const element =  this.registrationArr[i];
+      if(index===i){
+        
+        this.registrationArr[i].emailId=this.emailId;
+        this.registrationArr[i].firstName=this.userName;
+        this.registrationArr[i].lastName=this.lName;
+        this.updatedIndex="";
+      }
+      
+    }
   }
 
 }
